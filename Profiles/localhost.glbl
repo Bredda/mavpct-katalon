@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalVariableEntities>
+   <description></description>
+   <name>localhost</name>
+   <tag></tag>
+   <defaultProfile>true</defaultProfile>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>[('host') : 'localhost', ('db_name') : 'MavPctDB', ('username') : 'MavPctPano', ('password') : '#M@vPctP@no02']</initValue>
+      <name>MAVPCT_DB</name>
+   </GlobalVariableEntity>
+</GlobalVariableEntities>
