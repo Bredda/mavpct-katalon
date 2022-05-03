@@ -2,6 +2,7 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 
+import org.sikuli.basics.Settings
 import org.sikuli.script.ImagePath
 
 import com.kms.katalon.core.annotation.BeforeTestCase
@@ -25,6 +26,9 @@ class GenericTestListener {
 		ImagePath.setBundlePath(imagePath.toString())
 		
 		KeywordUtil.markPassed("Dossier d'image pour Sikulix: ${imagePath.toString()}")
+		
+		Settings.OcrTextSearch = true
+		
 	}
 	
 	@BeforeTestCase
