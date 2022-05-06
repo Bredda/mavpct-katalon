@@ -3,9 +3,6 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
-
-import java.sql.ResultSet
-
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -13,38 +10,23 @@ import com.kms.katalon.core.model.FailureHandling as FailureHandling
 import com.kms.katalon.core.testcase.TestCase as TestCase
 import com.kms.katalon.core.testdata.TestData as TestData
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
-import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import common.ImgRepo as ImgRepo
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-/*String query = """
-SELECT TOP (100) [TimeStamp]
-      ,[EventType]
-      ,[Workstation]
-      ,[EventCategory]
-      ,[EventContentType]
-      ,[EventContent]
-  FROM [MavPctDB].[dbo].[TOperationalEvent]
-"""*/
+CustomKeywords.'common.Ecran.changerDossierImage'(ImgRepo.MAV_PCT)
 
-String query = """
-SELECT COUNT(*) AS total FROM [MavPctDB].[dbo].[TOperationalEvent]
-"""
+boolean nav2Ok = CustomKeywords.'common.Ecran.estExistantAvecSimilarite'('mavpct-nav2-stlazare', 90, 0.95)
 
-CustomKeywords.'mavpct.Database.connectDB'()
-
-ResultSet result = CustomKeywords.'mavpct.Database.executeQuery'(query)
-
-
-int i = 0
-while(result.next()) {
-	KeywordUtil.logInfo("Result ${result.getInt('total')}")
+if (!(nav2Ok)) {
+	CustomKeywords.'common.Ecran.prendreScreenshot'('nav2_stLazare_failed')
+	    KeywordUtil.markFailedAndStop('La navette N2 n\'a pas été trouée à St Lazare')
 }
 
 
-CustomKeywords.'mavpct.Database.closeDatabaseConnection'()
 

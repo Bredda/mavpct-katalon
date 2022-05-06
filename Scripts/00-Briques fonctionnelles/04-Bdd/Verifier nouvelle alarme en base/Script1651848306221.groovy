@@ -21,18 +21,13 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-/*String query = """
-SELECT TOP (100) [TimeStamp]
-      ,[EventType]
-      ,[Workstation]
-      ,[EventCategory]
-      ,[EventContentType]
-      ,[EventContent]
-  FROM [MavPctDB].[dbo].[TOperationalEvent]
-"""*/
-
 String query = """
-SELECT COUNT(*) AS total FROM [MavPctDB].[dbo].[TOperationalEvent]
+SELECT TOP (1) [App_DateTime]
+      ,[App_Milli]
+      ,[Name]
+      ,[Label]
+  FROM [MavPctDB].[dbo].[TPnAlarms]
+    ORDER BY App_DateTime DESC
 """
 
 CustomKeywords.'mavpct.Database.connectDB'()
@@ -40,11 +35,18 @@ CustomKeywords.'mavpct.Database.connectDB'()
 ResultSet result = CustomKeywords.'mavpct.Database.executeQuery'(query)
 
 
-int i = 0
 while(result.next()) {
-	KeywordUtil.logInfo("Result ${result.getInt('total')}")
+	if (result.getString('Label') != label) {
+		KeywordUtil.markFailedAndStop "La dernière alarme en base n'a pas le label attendu. Attendu: ${label}, réel: ${result.getString('Label')}"
+	} else {
+		KeywordUtil.logInfo "La dernière alarme en base a bien le label attendu ($label)"
+	}
+	if (result.getString('Name') != name) {
+		KeywordUtil.markFailedAndStop "La dernière alarme en base n'a pas le nom attendu. Attendu: ${name}, réel: ${result.getString('Name')}"
+	} else {
+		KeywordUtil.logInfo "La dernière alarme en base a bien le nom attendu ($name)"
+	}
 }
 
 
 CustomKeywords.'mavpct.Database.closeDatabaseConnection'()
-

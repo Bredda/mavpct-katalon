@@ -21,10 +21,15 @@ import org.sikuli.script.ScreenImage
 
 public class Ecran {
 
-	private static Screen screen = null
-
+	public static Screen screen = null
+	public static Screen screen2 = null
+	
 	public static void initiliaze() {
 		screen = new Screen()
+		int nbScreen = screen.getNumberScreens()
+		if (nbScreen == 2)
+			screen2 = screen.getScreen(1)
+		KeywordUtil.logInfo "Sikulix initialisé avec ${nbScreen} écrans"
 	}
 
 	@Keyword(keywordObject="Sikulix")
@@ -54,6 +59,17 @@ public class Ecran {
 	def static cliquer(String image) {
 		cliquerAvecSimilarite image, 0.7
 	}
+	
+	@Keyword(keywordObject="Sikulix")
+	def static cliquer2emeEcran(String image) {
+		String imageName = sanitizeImage image
+		Pattern p = new Pattern(imageName).similar(0.7)
+		if (screen2 == null)
+			KeywordUtil.markErrorAndStop "Pas de deuxième écran de détecté"
+		screen2.click(p)
+	}
+	
+	
 	@Keyword(keywordObject="Sikulix")
 	def static cliquerText(String texte) {
 
@@ -72,14 +88,30 @@ public class Ecran {
 	def static cliquerAvecSimilarite(String image, float similar) {
 		String imageName = sanitizeImage image
 		Pattern p = new Pattern(imageName).similar(similar)
-			
+
 		screen.click(p)
 	}
-	
+
+	@Keyword(keywordObject="Sikulix")
+	def static cliquerDroitAvecSimilarite(String image, float similar) {
+		String imageName = sanitizeImage image
+		Pattern p = new Pattern(imageName).similar(similar)
+
+		screen.rightClick(p)
+	}
+
 	@Keyword(keywordObject="Sikulix")
 	def static cliquerAvecDecalage(String image, int dx, int dy) {
 		String imageName = sanitizeImage image
 		Pattern p = new Pattern(imageName).similar(0.7)
+
+		screen.click(p.targetOffset(dx, dy))
+	}
+
+	@Keyword(keywordObject="Sikulix")
+	def static cliquerAvecSimilariteEtDecalage(String image, float similar, int dx, int dy) {
+		String imageName = sanitizeImage image
+		Pattern p = new Pattern(imageName).similar(similar)
 
 		screen.click(p.targetOffset(dx, dy))
 	}
