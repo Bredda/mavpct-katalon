@@ -10,7 +10,7 @@ boolean chromeOuvertStaCharge = CustomKeywords.'common.Ecran.estExistantAvecSimi
 if (!chromeOuvertStaCharge) {
 	boolean chromeOuvertStaNonCharge = CustomKeywords.'common.Ecran.estExistantAvecSimilarite'('chrome-nouvel_onglet.png', 3, 0.7)
 	if (!chromeOuvertStaNonCharge) {
-		CustomKeywords.'common.Ecran.cliquer'('chrome-icone.png')
+		CustomKeywords.'common.Ecran.cliquerAvecSimilarite'('chrome-icone.png', 0.7)
 	}
 	CustomKeywords.'common.Ecran.attendrePresence'('sta-raccourci', 15)
 	chromeOuvertStaCharge = CustomKeywords.'common.Ecran.estExistantAvecSimilarite'('sta-chrome-url', 3, 0.7)
@@ -21,5 +21,5 @@ if (!chromeOuvertStaCharge) {
 	
 	CustomKeywords.'common.Ecran.attendrePresence'('sta_P01_P02.png', 15)
 } 
-
+CustomKeywords.'common.Ecran.prendreScreenshot'('simulateur_sta_ok')
 KeywordUtil.markPassed "Simulateur STA ouvert"

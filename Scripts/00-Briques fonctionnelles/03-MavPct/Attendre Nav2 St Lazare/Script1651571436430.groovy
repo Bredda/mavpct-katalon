@@ -28,5 +28,7 @@ if (!(nav2Ok)) {
 	    KeywordUtil.markFailedAndStop('La navette N2 n\'a pas été trouée à St Lazare')
 }
 
+CustomKeywords.'common.Ecran.prendreScreenshot'('mavpct_n02_stLazare')
+
 
 

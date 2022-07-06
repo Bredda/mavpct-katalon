@@ -14,6 +14,6 @@ if (simulateurVisible) {
 
     CustomKeywords.'common.Ecran.attendrePresence'('saet-header', 30)
 }
-
+CustomKeywords.'common.Ecran.prendreScreenshot'('saetpatetra_ouvert')
 KeywordUtil.logInfo('Simulateur SAET PATETRA ouvert')
 

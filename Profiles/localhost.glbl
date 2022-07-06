@@ -9,4 +9,9 @@
       <initValue>[('host') : 'localhost', ('db_name') : 'MavPctDB', ('username') : 'MavPctPano', ('password') : '#M@vPctP@no02']</initValue>
       <name>MAVPCT_DB</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>monitoring</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

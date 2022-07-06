@@ -22,8 +22,7 @@ public class Database {
 
 	//Establishing a connection to the DataBase
 
-	@Keyword
-
+	@Keyword(keywordObject="Base de donnée")
 	def connectDB(){
 
 		//Load driver class for your specific database type
@@ -48,8 +47,7 @@ public class Database {
 
 	//Executing the constructed Query and Saving results in resultset
 
-	@Keyword
-
+	@Keyword(keywordObject="Base de donnée")
 	def executeQuery(String queryString) {
 
 		Statement stm = connection.createStatement()
@@ -62,8 +60,7 @@ public class Database {
 
 	//Closing the connection
 
-	@Keyword
-
+	@Keyword(keywordObject="Base de donnée")
 	def closeDatabaseConnection() {
 
 		if(connection != null && !connection.isClosed()){
@@ -82,8 +79,7 @@ public class Database {
 	 * @return single value result of SQL statement
 	 */
 
-	@Keyword
-
+	@Keyword(keywordObject="Base de donnée")
 	def execute(String queryString) {
 
 		Statement stm = connection.createStatement()

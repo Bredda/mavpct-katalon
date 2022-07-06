@@ -34,3 +34,4 @@ if (!dejaOuvert) {
 	CustomKeywords.'common.Ecran.cliquerAvecSimilarite'('saet-sim-3', 0.8)
 }
 CustomKeywords.'common.Ecran.attendrePresenceAvecSimilarite'('tetra-preuve-charge.png', 20, 0.7)
+CustomKeywords.'common.Ecran.prendreScreenshot'('sta_charge')

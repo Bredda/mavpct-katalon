@@ -18,8 +18,8 @@ import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
 'Charger le serveur MAVPCT'
+WebUI.callTestCase(findTestCase('00-Briques fonctionnelles/00-Serveur MavPct/Charger Serveur MavPct'), [:], FailureHandling.STOP_ON_FAILURE)
 
-//WebUI.callTestCase(findTestCase('00-Briques fonctionnelles/00-Serveur MavPct/Charger Serveur MavPct'), [:], FailureHandling.STOP_ON_FAILURE)
 'Ouvrir le simulateur STA'
 WebUI.callTestCase(findTestCase('00-Briques fonctionnelles/02-Simulateur STA/Ouvrir simulateur STA'), [:], FailureHandling.STOP_ON_FAILURE)
 
@@ -94,4 +94,3 @@ WebUI.callTestCase(findTestCase('00-Briques fonctionnelles/03-MavPct/Verifier al
 'Vérifier que l\'alrme a bien été inscrite en base'
 WebUI.callTestCase(findTestCase('00-Briques fonctionnelles/04-Bdd/Verifier nouvelle alarme en base'), [('label') : 'BA', ('name') : '/MAVPCT/Shuttles/L14_NAV02/Coach1/Alarms/BA'], 
     FailureHandling.STOP_ON_FAILURE)
-

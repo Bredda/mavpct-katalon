@@ -30,3 +30,4 @@ WebUiBuiltInKeywords.delay(50)
 
 CustomKeywords.'common.Ecran.attendrePresenceAvecSimilarite'('saet-stopped', 95, 0.9)
 
+CustomKeywords.'common.Ecran.prendreScreenshot'('simulation_saet_finie')

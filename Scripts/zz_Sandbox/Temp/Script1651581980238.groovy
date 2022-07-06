@@ -25,3 +25,5 @@ WebUI.callTestCase(findTestCase('00-Briques fonctionnelles/01-Simulateur SAET PA
 WebUI.callTestCase(findTestCase('00-Briques fonctionnelles/01-Simulateur SAET PATETRA/Lancer simulation Prepa N02 et N04'), 
     [:], FailureHandling.STOP_ON_FAILURE)
 
+WS.sendRequest(findTestObject(null))
+
